@@ -263,6 +263,13 @@ public class TimePickerBuilder {
 
 
     public TimePickerBuilder setLabel(String label_year, String label_month, String label_day, String label_hours, String label_mins, String label_seconds) {
+        if (label_year == null) label_year = "";
+        if (label_month == null) label_month = "";
+        if (label_day == null) label_day = "";
+        if (label_hours == null) label_hours = "";
+        if (label_mins == null) label_mins = "";
+        if (label_seconds == null) label_seconds = "";
+
         mPickerOptions.label_year = label_year;
         mPickerOptions.label_month = label_month;
         mPickerOptions.label_day = label_day;

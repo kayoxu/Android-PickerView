@@ -15,12 +15,6 @@
             android:orientation="vertical">
 
 
-            <Button
-                android:id="@+id/btn_lunar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:text="@string/picker_custom_lunar" />
 
             <Button
                 android:id="@+id/btn_Time"
@@ -28,6 +22,12 @@
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:text="@string/picker_time" />
+            <Button
+                    android:id="@+id/btn_lunar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/picker_custom_lunar" />
 
             <Button
                 android:id="@+id/btn_Options"

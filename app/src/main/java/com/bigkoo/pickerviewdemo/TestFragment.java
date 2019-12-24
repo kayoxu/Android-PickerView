@@ -64,8 +64,10 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 Button btn = (Button) v;
                 btn.setText(getTime(date));
             }
+
+      
         })
-                .setLayoutRes(R.layout.pickerview_custom_time, new CustomListener() {
+                .setLayoutRes(R.layout.kayo_time_picker_item, new CustomListener() {
 
                     @Override
                     public void customLayout(View v) {
@@ -86,7 +88,7 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                         });
                     }
                 })
-                .setType(new boolean[]{true, true, true, false, false, false})
+                .setType(new boolean[]{true, true, true, true, false, false})
                 .setLabel("", "", "", "", "", "") //设置空字符串以隐藏单位提示   hide label
                 .setDividerColor(Color.DKGRAY)
                 .setContentTextSize(20)
@@ -98,6 +100,8 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 .build();
 
         pvTime.setKeyBackCancelable(false);//系统返回键监听屏蔽掉
+
+        pvTime.show(mFrameLayout, false);//弹出时间选择器，传递参数过去，回调的时候则可以绑定此view
     }
 
     @Override

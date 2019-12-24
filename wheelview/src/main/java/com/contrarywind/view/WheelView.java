@@ -80,6 +80,7 @@ public class WheelView extends View {
 
     // 条目间距倍数
     private float lineSpacingMultiplier = 1.6F;
+    private float padding = 0F;
     private boolean isLoop;
 
     // 第一条线Y坐标值
@@ -155,6 +156,7 @@ public class WheelView extends View {
             dividerWidth = a.getDimensionPixelSize(R.styleable.pickerview_wheelview_dividerWidth, 2);
             textSize = a.getDimensionPixelOffset(R.styleable.pickerview_wheelview_textSize, textSize);
             lineSpacingMultiplier = a.getFloat(R.styleable.pickerview_wheelview_lineSpacingMultiplier, lineSpacingMultiplier);
+            padding = a.getFloat(R.styleable.pickerview_wheelview_padding, padding);
             a.recycle();//回收内存
         }
 
@@ -253,7 +255,7 @@ public class WheelView extends View {
         }
         paintCenterText.getTextBounds("\u661F\u671F", 0, 2, rect); // 星期的字符编码（以它为标准高度）
         maxTextHeight = rect.height() + 2;
-        itemHeight = lineSpacingMultiplier * maxTextHeight;
+        itemHeight = lineSpacingMultiplier * maxTextHeight + dp2px((int) padding);
     }
 
     public void smoothScroll(ACTION action) {//平滑滚动的实现
@@ -499,7 +501,7 @@ public class WheelView extends View {
                     // 条目经过第一条线
                     canvas.save();
                     canvas.clipRect(0, 0, measuredWidth, firstLineY - translateY);
-                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
+                    canvas.scale(1.0F, (float) Math.sin(radian) * (SCALE_CONTENT + (10 < padding ? 0.4F : 0F)));
                     setOutPaintStyle(offsetCoefficient, angle);
                     canvas.drawText(contentText, drawOutContentStart, maxTextHeight, paintOuterText);
                     canvas.restore();
@@ -517,7 +519,7 @@ public class WheelView extends View {
                     canvas.restore();
                     canvas.save();
                     canvas.clipRect(0, secondLineY - translateY, measuredWidth, (int) (itemHeight));
-                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
+                    canvas.scale(1.0F, (float) Math.sin(radian) * (SCALE_CONTENT + (10 < padding ? 0.4F : 0F)));
                     setOutPaintStyle(offsetCoefficient, angle);
                     canvas.drawText(contentText, drawOutContentStart, maxTextHeight, paintOuterText);
                     canvas.restore();
@@ -533,7 +535,7 @@ public class WheelView extends View {
                     // 其他条目
                     canvas.save();
                     canvas.clipRect(0, 0, measuredWidth, (int) (itemHeight));
-                    canvas.scale(1.0F, (float) Math.sin(radian) * SCALE_CONTENT);
+                    canvas.scale(1.0F, (float) Math.sin(radian) * (SCALE_CONTENT + (10 < padding ? 0.4F : 0F)));
                     setOutPaintStyle(offsetCoefficient, angle);
                     // 控制文字水平偏移距离
                     canvas.drawText(contentText, drawOutContentStart + textXOffset * offsetCoefficient, maxTextHeight, paintOuterText);
@@ -836,5 +838,9 @@ public class WheelView extends View {
     @Override
     public Handler getHandler() {
         return handler;
+    }
+
+    public int dp2px(int dp) {
+        return (int) ((getResources().getDisplayMetrics().density * dp) + 0.5);
     }
 }

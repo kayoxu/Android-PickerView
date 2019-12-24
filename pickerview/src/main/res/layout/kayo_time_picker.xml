@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/content_layout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/circular_timepicker_bg_12"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+        <TextView
+                android:id="@+id/titleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="请选择起止时间"
+                android:textColor="#191D2D"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingLeft="6dp"
+                android:paddingTop="4dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="4dp"
+                android:text="取消"
+                android:textColor="@color/colorAccent"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="18dp">
+
+        <TextView
+                android:id="@+id/startTimeTitleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circular_timepicker_30"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="2dp"
+                android:text="开始时间"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp"/>
+
+        <TextView
+                android:id="@+id/startTimeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="8月1日到8月2日"
+                android:textColor="#1E6FF4"
+                android:textSize="13sp"/>
+
+
+        <FrameLayout
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="16dp"
+                android:id="@+id/startTimeRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        <TextView
+                android:id="@+id/endTimeTitleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circular_timepicker_30"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="2dp"
+                android:text="结束时间"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp"/>
+
+        <TextView
+                android:id="@+id/endTimeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="8月1日到8月2日"
+                android:textColor="#FF9117"
+                android:textSize="13sp"/>
+
+
+        <FrameLayout
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="16dp"
+                android:id="@+id/endTimeRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        <Button
+                android:id="@+id/okBtn"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/color_background_btn"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

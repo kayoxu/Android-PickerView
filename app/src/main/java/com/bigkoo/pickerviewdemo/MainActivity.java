@@ -30,6 +30,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.bigkoo.pickerviewdemo.bean.CardBean;
 import com.bigkoo.pickerviewdemo.bean.ProvinceBean;
+import com.kayoxu.android.utils.timepicker.KayoTimePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,11 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<String> clothes = new ArrayList<>();
     private ArrayList<String> computer = new ArrayList<>();
 
+    MainActivity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        activity = this;
         //等数据加载完毕再初始化并显示Picker,以免还未加载完数据就显示,造成APP崩溃。
         getOptionData();
 
@@ -96,7 +99,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.btn_Time && pvTime != null) {
             // pvTime.setDate(Calendar.getInstance());
             /* pvTime.show(); //show timePicker*/
-            pvTime.show(v);//弹出时间选择器，传递参数过去，回调的时候则可以绑定此view
+//            pvTime.show(v);//弹出时间选择器，传递参数过去，回调的时候则可以绑定此view
+
+            KayoTimePicker timePicker = new KayoTimePicker(activity);
+            timePicker.setLabel("年", "月", "日", "时", "分", "秒");
+            timePicker.setTimeTypeShow(new boolean[]{true, true, true, true, true, true});
+            timePicker.setMinTime("2018-01-02 10:11:12");
+            timePicker.setMaxTime("2019-12-29 11:12:13");
+            timePicker.setStartTime("2019-12-24 14:47:10");
+            timePicker.setEndTime("2019-12-28 15:56:54");
+            timePicker.setShowEndTime(true);
+            timePicker.setOnTimeResult(new KayoTimePicker.TimeResult() {
+                @Override
+                public void onTime(String startTime, String endTime) {
+                    Toast.makeText(activity, startTime + "___" + endTime, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancel(String startTime, String endTime) {
+                    Toast.makeText(activity, startTime + "___" + endTime, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            timePicker.show();
+
         } else if (v.getId() == R.id.btn_Options && pvOptions != null) {
             pvOptions.show(); //弹出条件选择器
         } else if (v.getId() == R.id.btn_CustomOptions && pvCustomOptions != null) {
@@ -113,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             pvCustomLunar.show();
         } else if (v.getId() == R.id.btn_circle) {
             startActivity(new Intent(MainActivity.this, TestCircleWheelViewActivity.class));
+
         }
     }
 
@@ -131,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 Toast.makeText(MainActivity.this, getTime(date), Toast.LENGTH_SHORT).show();
             }
+
         })
                 .setDate(selectedDate)
                 .setRangDate(startDate, endDate)
@@ -201,6 +229,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i("pvTime", "onTimeSelect");
 
             }
+
         })
                 .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
                     @Override
@@ -263,6 +292,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 btn_CustomTime.setText(getTime(date));
             }
+
+
         })
                 /*.setType(TimePickerView.Type.ALL)//default is all
                 .setCancelText("Cancel")
