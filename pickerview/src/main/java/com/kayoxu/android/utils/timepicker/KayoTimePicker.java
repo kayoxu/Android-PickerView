@@ -194,9 +194,10 @@ public class KayoTimePicker extends LinearLayout {
                 })
                 .setType(timeTypeShow)
                 .setLabel(label_year, label_month, label_day, label_hours, label_minutes, label_seconds) //设置空字符串以隐藏单位提示   hide label
-                .setDividerColor(Color.DKGRAY)
-                .setDividerType(WheelView.DividerType.WRAP)
+                .setDividerColor(Color.parseColor("#CCCCCC"))
+//                .setDividerType(WheelView.DividerType.WRAP)
                 .setContentTextSize(16)
+                .setTitleColor(Color.parseColor("#333333"))
                 .setItemVisibleCount(3)
                 .setRangDate(startDate, endDate)
                 .setDate(selectedDate)
@@ -403,7 +404,7 @@ public class KayoTimePicker extends LinearLayout {
         endTimeTitleView.setVisibility(showEndTime ? VISIBLE : GONE);
         endTimeView.setVisibility(showEndTime ? VISIBLE : GONE);
         endTimeRoot.setVisibility(showEndTime ? VISIBLE : GONE);
-        titleView.setText(showEndTime ? "请选择起止时间" : "请选择时间");
+        titleView.setText(showEndTime ? "选择时间段" : "请选择时间");
 
         return this;
     }
