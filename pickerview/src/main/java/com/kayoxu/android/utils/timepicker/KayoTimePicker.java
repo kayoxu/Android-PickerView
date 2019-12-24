@@ -326,8 +326,9 @@ public class KayoTimePicker extends LinearLayout {
     }
 
 
-    public void setOnTimeResult(TimeResult timeResult) {
+    public KayoTimePicker setOnTimeResult(TimeResult timeResult) {
         this.timeResult = timeResult;
+        return this;
     }
 
     public KayoTimePicker(Context context) {
@@ -360,7 +361,7 @@ public class KayoTimePicker extends LinearLayout {
         initView(context);
     }
 
-    public void show() {
+    public KayoTimePicker show() {
         if (null != sheetDialog) {
 
             initTimePicker(startTimeRoot, minTime, maxTime, startTime);
@@ -368,6 +369,7 @@ public class KayoTimePicker extends LinearLayout {
 
             sheetDialog.show();
         }
+        return this;
     }
 
     public KayoTimePicker setStartTime(String startTime) {

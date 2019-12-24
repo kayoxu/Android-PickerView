@@ -101,27 +101,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             /* pvTime.show(); //show timePicker*/
 //            pvTime.show(v);//弹出时间选择器，传递参数过去，回调的时候则可以绑定此view
 
-            KayoTimePicker timePicker = new KayoTimePicker(activity);
-            timePicker.setLabel("年", "月", "日", "时", "分", "秒");
-            timePicker.setTimeTypeShow(new boolean[]{true, true, true, true, true, true});
-            timePicker.setMinTime("2018-01-02 10:11:12");
-            timePicker.setMaxTime("2019-12-29 11:12:13");
-            timePicker.setStartTime("2019-12-24 14:47:10");
-            timePicker.setEndTime("2019-12-28 15:56:54");
-            timePicker.setShowEndTime(true);
-            timePicker.setOnTimeResult(new KayoTimePicker.TimeResult() {
-                @Override
-                public void onTime(String startTime, String endTime) {
-                    Toast.makeText(activity, startTime + "___" + endTime, Toast.LENGTH_SHORT).show();
-                }
+            KayoTimePicker timePicker = new KayoTimePicker(activity)
+                    .setLabel("年", "月", "日", "时", "分", "秒")
+                    .setTimeTypeShow(new boolean[]{true, true, true, true, true, true}).setMinTime("2018-01-02 10:11:12")
+                    .setMaxTime("2019-12-29 11:12:13")
+                    .setStartTime("2019-12-24 14:47:10")
+                    .setEndTime("2019-12-28 15:56:54")
+                    .setShowEndTime(true)
+                    .setOnTimeResult(new KayoTimePicker.TimeResult() {
+                        @Override
+                        public void onTime(String startTime, String endTime) {
+                            Toast.makeText(activity, startTime + "___" + endTime, Toast.LENGTH_SHORT).show();
+                        }
 
-                @Override
-                public void onCancel(String startTime, String endTime) {
-                    Toast.makeText(activity, startTime + "___" + endTime, Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            timePicker.show();
+                        @Override
+                        public void onCancel(String startTime, String endTime) {
+                            Toast.makeText(activity, startTime + "___" + endTime, Toast.LENGTH_SHORT).show();
+                        }
+                    }).show();
 
         } else if (v.getId() == R.id.btn_Options && pvOptions != null) {
             pvOptions.show(); //弹出条件选择器
