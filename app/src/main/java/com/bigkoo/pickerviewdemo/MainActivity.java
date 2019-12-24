@@ -103,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             KayoTimePicker timePicker = new KayoTimePicker(activity)
                     .setLabel("年", "月", "日", "时", "分", "秒")
-                    .setTimeTypeShow(new boolean[]{true, true, true, false, false, false}).setMinTime("2018-01-02 10:11:12")
+                    .setTimeTypeShow(new boolean[]{true, true, true, true, true, true})
+                    .setMinTime("2018-01-02 10:11:12")
                     .setMaxTime("2019-12-29 11:12:13")
                     .setStartTime("2019-12-24 14:47:10")
                     .setEndTime("2019-12-28 15:56:54")
