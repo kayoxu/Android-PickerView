@@ -99,7 +99,7 @@ public class KayoTimePicker extends LinearLayout {
         endTimeView = root.findViewById(R.id.endTimeView);
         startTimeTitleView = root.findViewById(R.id.startTimeTitleView);
         endTimeTitleView = root.findViewById(R.id.endTimeTitleView);
-        
+
         setTimeTitle();
 
 
@@ -347,7 +347,7 @@ public class KayoTimePicker extends LinearLayout {
         this.endTimeDefault = endTime;
 
         initView(context);
-     }
+    }
 
     public KayoTimePicker(Context context, String startTime, String endTime, TimeResult timeResult) {
         super(context);
@@ -360,7 +360,7 @@ public class KayoTimePicker extends LinearLayout {
         initView(context);
     }
 
-    public KayoTimePicker show() {
+    public void show() {
         if (null != sheetDialog) {
 
             initTimePicker(startTimeRoot, minTime, maxTime, startTime);
@@ -368,7 +368,6 @@ public class KayoTimePicker extends LinearLayout {
 
             sheetDialog.show();
         }
-        return this;
     }
 
     public KayoTimePicker setStartTime(String startTime) {
@@ -407,17 +406,19 @@ public class KayoTimePicker extends LinearLayout {
         return this;
     }
 
-    public void setTimeTypeShow(boolean[] timeTypeShow) {
+    public KayoTimePicker setTimeTypeShow(boolean[] timeTypeShow) {
         this.timeTypeShow = timeTypeShow;
+        return this;
     }
 
-    public void setLabel(String label_year, String label_month, String label_day, String label_hours, String label_mins, String label_seconds) {
+    public KayoTimePicker setLabel(String label_year, String label_month, String label_day, String label_hours, String label_mins, String label_seconds) {
         this.label_year = label_year;
         this.label_month = label_month;
         this.label_day = label_day;
         this.label_hours = label_hours;
         this.label_minutes = label_mins;
         this.label_seconds = label_seconds;
+        return this;
     }
 
 
