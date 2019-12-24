@@ -60,6 +60,8 @@ public class KayoTimePicker extends LinearLayout {
     private String maxTime;
     private String minTime;
     private TimeResult timeResult;
+    private String titleStr;
+    private boolean showWeek = true;
 
     //    private BottomSheetDialog sheetDialog;
     private IBottomSheetDialog sheetDialog;
@@ -380,6 +382,19 @@ public class KayoTimePicker extends LinearLayout {
         return this;
     }
 
+    public KayoTimePicker setTitle(String title) {
+        this.titleStr = title;
+        titleView.setText(titleStr);
+        return this;
+    }
+
+    public KayoTimePicker showWeek(boolean showWeek) {
+        this.showWeek = showWeek;
+        startTimeView.setVisibility(showWeek ? VISIBLE : GONE);
+        endTimeView.setVisibility(showWeek && showEndTime ? VISIBLE : GONE);
+        return this;
+    }
+
     public KayoTimePicker setEndTime(String endTime) {
         this.endTime = endTime;
         this.endTimeDefault = endTime;
@@ -402,9 +417,11 @@ public class KayoTimePicker extends LinearLayout {
 
         startTimeTitleView.setVisibility(showEndTime ? VISIBLE : GONE);
         endTimeTitleView.setVisibility(showEndTime ? VISIBLE : GONE);
-        endTimeView.setVisibility(showEndTime ? VISIBLE : GONE);
+        endTimeView.setVisibility(showEndTime && showWeek ? VISIBLE : GONE);
         endTimeRoot.setVisibility(showEndTime ? VISIBLE : GONE);
-        titleView.setText(showEndTime ? "选择时间段" : "请选择时间");
+
+        String text = showEndTime ? "选择时间段" : "请选择时间";
+        titleView.setText(null == titleStr ? text : titleStr);
 
         return this;
     }

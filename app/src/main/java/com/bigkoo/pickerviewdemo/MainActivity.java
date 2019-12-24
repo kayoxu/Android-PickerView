@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setMaxTime("2019-12-29 11:12:13")
                     .setStartTime("2019-12-24 14:47:10")
                     .setEndTime("2019-12-28 15:56:54")
+                    .showWeek(false)
                     .setShowEndTime(true)
                     .setOnTimeResult(new KayoTimePicker.TimeResult() {
                         @Override
